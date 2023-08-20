@@ -8,6 +8,10 @@ export default class Order {
   constructor(id: string, costumerId: string, items: OrderItem[]) {
     this._id = id;
     this._costumerId = costumerId;
-    this._items = items
+    this._items = items;
+  }
+
+  total(): number {
+    return this._items.reduce((acc, item) => acc + item._price, 0);
   }
 }
