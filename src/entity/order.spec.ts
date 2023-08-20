@@ -21,15 +21,22 @@ describe("Order Unit Tests", () => {
   });
 
   test("Should calculate total", () => {
-    const item = new OrderItem("123", "name", 5, 'prodcutId', 100);
-    const item2 = new OrderItem("123", "item2", 100, 'productId2', 5);
+    const item = new OrderItem("123", "name", 5, "prodcutId", 2);
+    const item2 = new OrderItem("123", "item2", 100, "productId2", 2);
     const order = new Order("o1", "customer1", [item]);
     let total = order.total();
 
-    expect(total).toBe(5);
+    expect(total).toBe(10);
 
     const order2 = new Order("o1", "customer1", [item, item2]);
-    total = order2.total()
-    expect(total).toBe(105);
+    total = order2.total();
+    expect(total).toBe(210);
+  });
+
+  test("Should throw error if the quantity is greater than 0", () => {
+    expect(() => {
+      const item = new OrderItem("123", "name", 5, "prodcutId", 0);
+      const order = new Order("o1", "customer1", [item]);
+    }).toThrowError("Quantity  must be greater than 0");
   });
 });
