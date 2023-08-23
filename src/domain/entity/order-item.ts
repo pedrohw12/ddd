@@ -41,4 +41,8 @@ export default class OrderItem {
   get id() {
     return this._id;
   }
+
+  get quantity() {
+    return this._quantity;
+  }
 }

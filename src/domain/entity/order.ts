@@ -14,11 +14,23 @@ export default class Order {
     this.validate();
   }
 
+  get id() {
+    return this._id;
+  }
+
+  get items() {
+    return this._items;
+  }
+
+  get customerId() {
+    return this._costumerId;
+  }
+
   validate(): boolean {
     if (this._id.length === 0) {
       throw new Error("Id is required");
     }
-    if (this._costumerId.length  === 0) {
+    if (this._costumerId.length === 0) {
       throw new Error("CustomerId is required");
     }
     if (this._items.length === 0) {
